@@ -1,4 +1,2 @@
 @rem telnet into server
-
-telnet localhost 8080
-
+@telnet localhost 8080
