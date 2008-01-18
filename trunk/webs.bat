@@ -1,3 +1,2 @@
 @rem run the web server
-lua webserver.lua
-
+@lua webserver.lua
