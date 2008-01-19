@@ -3,6 +3,7 @@
 -- Version 0.1
 -- Copyright (c) 2008 Sam Saint-Pettersen
 -- Released under the GNU General Public License V3
+-- See the COPYING file
 ----------------------------------------------------
 
 -- load module for network connections
