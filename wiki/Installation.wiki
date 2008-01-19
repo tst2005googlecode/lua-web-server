@@ -54,7 +54,7 @@ Alternatively, instead of running the _telin_ script, you can do this to connect
 telnet localhost 8080
 }}}
 
-Once connected with to the server, enter:
+Once connected to the server, enter:
 
 {{{
 kill
