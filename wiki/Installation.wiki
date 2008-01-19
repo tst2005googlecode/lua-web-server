@@ -1,6 +1,22 @@
 #labels Featured
-=Installation=
+== Introduction ==
+
+This is a experimental project made to see if I could convert a web server implementation I saw written in Ruby to Lua.
+
+As of version 0.1, it only supports the serving of HTML documents.
 
 ==Prerequisties==
 
-Add your content here
+This web server requires the Lua interpreter and LuaSocket.
+
+==Installing web server== 
+
+You will need to install the Lua interpreter and/or LuaSocket in a location where LuaSocket is accessible by the Lua interpreter.
+
+Make sure that the path to the intepreter ("lua") is in your operating system's PATH variable or you will have to type in the shell or change the _webs_ script to point to the lua interpreter and run the web server like so:
+
+{{{
+/path/to/lua webserver.lua
+}}}
+
+==
