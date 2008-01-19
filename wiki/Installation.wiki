@@ -9,7 +9,7 @@ This web server requires the Lua interpreter and LuaSocket.
 
 ==Installing web server== 
 
-You will need to install the Lua interpreter and/or LuaSocket in a location where LuaSocket is accessible by the Lua interpreter. A package containing the Lua interpreter and LuaSocket for Windows is available here (win32lua.zip).
+You will need to install the Lua interpreter and/or LuaSocket in a location where LuaSocket is accessible by the Lua interpreter. A package containing the Lua interpreter and LuaSocket for Windows is available here (win32lua.zip). Users of other operating systems can find the source code to compile yourself, for both, from the original authors.
 
 Make sure that the path to the interpreter ("lua") is in your operating system's PATH variable or you will have to type in the shell or change the _webs_ script to point to the lua interpreter and run the web server like so:
 
@@ -35,22 +35,17 @@ or alternatively:
 lua webserver.lua
 }}}
 
-The server runs on port 8080 and can be accessed in a web browser with http://localhost:8080 or http://127.0.0.1:8080.
+The server runs locally on port 8080 and can be accessed in a web browser with http://localhost:8080 or http://127.0.0.1:8080.
 
 HTML files served by the server should be placed in _/www_
 
 ==Killing the server==
 
-The server can be stopped with telnet, like so from the shell prompt (when in the directory where _webserver.lua_ is located):
+The server can be stopped with telnet.
+You can connect to the server via telnet from the shell prompt (when in the directory where _webserver.lua_ is located):
 
 {{{
 telin
-}}}
-
-Then once connected with telnet, enter:
-
-{{{
-kill
 }}}
 
 Alternatively, instead of running the _telin_ script, you can do this to connect to the server:
@@ -59,3 +54,8 @@ Alternatively, instead of running the _telin_ script, you can do this to connect
 telnet localhost 8080
 }}}
 
+Once connected with to the server, enter:
+
+{{{
+kill
+}}}
