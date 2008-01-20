@@ -1,7 +1,7 @@
 ----------------------------------------------------
 -- Web server
 -- Version 0.1
--- Copyright (c) 2008 Sam Saint-Pettersen
+-- Copyright (c) 2008 Samuel Saint-Pettersen
 -- Released under the GNU General Public License V3
 -- See the COPYING file
 ----------------------------------------------------
@@ -11,7 +11,7 @@ local socket = require("socket")
 
 -- print message to show web server is running
 print("Web server v0.1")
-print("Copyright (c) 2008 Sam Saint-Pettersen\n")
+print("Copyright (c) 2008 Samuel Saint-Pettersen\n")
 print("Running...")
 
 -- create TCP socket on localhost:8080
