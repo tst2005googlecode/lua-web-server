@@ -1,5 +1,5 @@
 #labels Featured
-==Introduction==@
+==Introduction==
 
 This is a experimental project made to see if I could convert a web server implementation I saw written in Ruby to Lua. As of version 0.1, it only supports the serving of HTML documents.
 
