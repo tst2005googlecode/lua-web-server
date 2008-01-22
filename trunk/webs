@@ -1,4 +1,4 @@
 #!/bin/sh
 # run the web server
-lua webserver.lua
+lua ladle.lua $1
 
