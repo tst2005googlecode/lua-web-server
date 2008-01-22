@@ -1,4 +1,4 @@
 #!/bin/sh
 # telnet into server
-telnet localhost 8080
+telnet localhost $1
 
