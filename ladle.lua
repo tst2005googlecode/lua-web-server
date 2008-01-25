@@ -67,15 +67,18 @@ function serve(request)
 	local file = string.match(request, "%l+%\/?.?%l+")
 	-- if no file mentioned in request, assume root file is index.html.
 	if file == nil then
-		file = "index.html"
+	    file = "index.html"
 	end
 	
 	-- retrieve mime type for file based on extension
 	local ext = string.match(file, "%\.%l%l%l%l?")
 	local mime = getMime(ext)
+        print(mime)
 
-	-- reply with a response indicating relevant mime type 
-	client:send("HTTP/1.1 200/OK\r\nContent-Type:" .. mime .. "\r\n\r\n")
+	-- reply with a response indicating relevant mime type
+	if(mime ~= nil) then
+	    client:send("HTTP/1.1 200/OK\r\nContent-Type:" .. mime .. "\r\n\r\n")
+        end
 
 	-- determine if file is in binary or ascii format
 	local binary = isBinary(mime)
