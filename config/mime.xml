@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <mime-config>
-	<file ext=".html">
-		<mime>text/html</mime>
-		<bin>false</bin>
-	</file>
-	<file ext=".txt">
-		<mime>text/plain</mime>
-		<bin>false</bin>
-	</file>
-	<file ext=".xml">
-		<mime>application/xml</mime>
-		<bin>false</bin>
-	</file>
-	<file ext=".jpg">
-		<mime>image/jpeg</mime>
-		<bin>true</bin>
-	</file>
-	<file ext=".png">
-		<mime>image/png</mime>
-		<bin>true</bin>
-	</file>
+        <file ext=".html">
+                <mime>text/html</mime>
+                <bin>false</bin>
+        </file>
+        <file ext=".txt">
+                <mime>text/plain</mime>
+                <bin>false</bin>
+        </file>
+        <file ext=".xml">
+                <mime>application/xml</mime>
+                <bin>false</bin>
+        </file>
+        <file ext=".jpg">
+                <mime>image/jpeg</mime>
+                <bin>true</bin>
+        </file>
+        <file ext=".png">
+                <mime>image/png</mime>
+                <bin>true</bin>
+        </file>
 </mime-config>
