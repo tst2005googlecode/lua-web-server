@@ -51,7 +51,7 @@ function waitReceive()
 		if not err then
 			-- if request is kill (via telnet), stop the server
 			if request == "kill" then
-				client:send("Ladle has stopped.")
+				client:send("Ladle has stopped.\n")
 				print("Stopped.")
 				break
 			else
@@ -73,12 +73,11 @@ function serve(request)
 	-- retrieve mime type for file based on extension
 	local ext = string.match(file, "%\.%l%l%l%l?")
 	local mime = getMime(ext)
-        print(mime)
 
 	-- reply with a response indicating relevant mime type
 	if(mime ~= nil) then
 	    client:send("HTTP/1.1 200/OK\r\nContent-Type:" .. mime .. "\r\n\r\n")
-        end
+	end
 
 	-- determine if file is in binary or ascii format
 	local binary = isBinary(mime)
@@ -109,16 +108,17 @@ function serve(request)
 end
 -- determine mime type based on file extension
 function getMime(ext)
-	if ext == ".html" then return "text/html" end
-	if ext == ".xml" then return "application/xml" end
-	if ext == ".txt" then return "text/plain" end
-	if ext == ".jpg" then return "image/jpeg" end
-	if ext == ".png" then return "image/png" end
-	if ext == ".gif" then return "image/gif" end	
+    if ext == nil then return "text/plain" end
+    if ext == ".txt" then return "text/plain" end
+    if ext == ".html" then return "text/html" end
+    if ext == ".xml" then return "application/xml" end
+    if ext == ".jpg" then return "image/jpeg" end
+    if ext == ".png" then return "image/png" end
+    if ext == ".gif" then return "image/gif" end	
 end
 -- determine if file is binary - true or false
 function isBinary(mime)
-         --! TODO
+    --! TODO
 end
 -- display error message and server information
 function error(message)
