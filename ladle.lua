@@ -6,7 +6,7 @@
 -- See the COPYING file.
 ----------------------------------------------------
 
--- load module for network connections.
+-- load module for network connections
 socket = require("socket")
 
 -- detect operating system
@@ -16,71 +16,111 @@ else
 	os = "Other OS"  -- !
 end
 
--- start web server.
+-- load mime configuration file
+-- !
+
+-- start web server
 function main(arg1) 
-	-- set first argument as port
-	port = arg1
-	-- display initial program information.
+	port = arg1 -- set first argument as port
+
+	-- display initial program information
 	print("Ladle web server v0.1.1.")
 	print("Copyright (c) 2008 Samuel Saint-Pettersen.")
-	-- if no port is specified, use port 8080.
+
+	-- if no port is specified, use port 8080
 	if port == nil then port = 8080 end
-	-- create tcp socket on localhost:%port%.
+
+	-- create tcp socket on localhost:%port%
 	server = assert(socket.bind("*", port))
+
 	-- display message to web server is running
 	print("\nRunning on localhost:" .. port)
-	waitReceive() -- begin waiting for client requests.
+	waitReceive() -- begin waiting for client requests
 end
--- wait for and receive client requests.
+-- wait for and receive client requests
 function waitReceive()
-	-- loop while waiting for a client request.
+	-- loop while waiting for a client request
 	while 1 do
-		-- accept a client request.
+		-- accept a client request
 		client = server:accept()
-		-- reply with standard web server response.
-		client:send("HTTP/1.1 200/OK\r\nContent-Type: text/html\r\n\r\n")
 		-- set timeout - 1 minute.
 		client:settimeout(60)
-		-- receive request from client.
+		-- receive request from client
 		local request, err = client:receive()
-		-- if there's no error, begin serving content or kill server.
+		-- if there's no error, begin serving content or kill server
 		if not err then
-			-- if request is kill (via telnet), stop the server.
+			-- if request is kill (via telnet), stop the server
 			if request == "kill" then
 				client:send("Ladle has stopped.")
 				print("Stopped.")
 				break
 			else
-				-- begin serving content.
+				-- begin serving content
 				serve(request)
 			end
 		end
 	end
 end
--- serve requested content.
+-- serve requested content
 function serve(request)
-	-- resolve requested file from client request.
+	-- resolve requested file from client request
 	local file = string.match(request, "%l+%\/?.?%l+")
 	-- if no file mentioned in request, assume root file is index.html.
 	if file == nil then
 		file = "index.html"
 	end
-	-- display requested file in browser
-	local served = io.open("www/" .. file, "r")
+	
+	-- retrieve mime type for file based on extension
+	local ext = string.match(file, "%\.%l%l%l%l?")
+	local mime = getMime(ext)
+
+	-- reply with a response indicating relevant mime type 
+	client:send("HTTP/1.1 200/OK\r\nContent-Type:" .. mime .. "\r\n\r\n")
+
+	-- determine if file is in binary or ascii format
+	local binary = isBinary(mime)
+
+	-- load requested file in browser
+	local served, flags
+	if binary == false then
+		-- if file is ASCII, use just read flag
+		flags = "r"	
+	else
+		-- if file is binary, also use binary flag (b)
+		-- note: this for operating systems which read 
+		-- binary files differently such as Windows
+		flags = "rb"
+	end
+	
+	served = io.open("www/" .. file, flags)
 	if served ~= nil then
 		local content = served:read("*all")
 		client:send(content)
 	else
-		-- display not found error.
+		-- display not found error
 		error("Not found!")
 	end
-	-- done with client, close request.
+
+	-- done with client, close request
 	client:close()
 end
--- display error message and server information.
+-- determine mime type based on file extension
+function getMime(ext)
+	if ext == ".html" then return "text/html" end
+	if ext == ".xml" then return "application/xml" end
+	if ext == ".txt" then return "text/plain" end
+	if ext == ".jpg" then return "image/jpeg" end
+	if ext == ".png" then return "image/png" end
+	if ext == ".gif" then return "image/gif" end	
+end
+-- determine if file is binary - true or false
+function isBinary(mime)
+         --! TODO
+end
+-- display error message and server information
 function error(message)
-	client:send("Not found!")
+	client:send(message)
 end
 -- invoke program starting point:
--- parameter is command-line argument for port number.
+-- parameter is command-line argument for port number
 main(arg[1])

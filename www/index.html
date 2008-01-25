@@ -5,25 +5,43 @@
         <title>Ladle test page</title>
         <style rel="stylesheet" type="text/css">
             body {
-                font-family: verdana;
-                font-size: 12px;
+                 font-family: verdana;
+                 font-size: 12px;
             }
             h3 {
-            	font-size: 14px;
+                 font-size: 14px;
             }
             a {
-            	color: #CC0000;
+           	     color: #000080;
             }
             a:hover {
-            	text-decoration: none;
+                 text-decoration: none;
+            }
+            a:visited {
+                 color: #000080;
             }
         </style>
     </head>
     <body>
         <p>
-			<h3>Welcome from Ladle</h4>
-			Ladle is a lightweight web server written in the Lua programming language using LuaSocket.<br/>
+        <img alt="Powered by Lua" src="lua.gif"/>
+		<h3>Welcome from Ladle</h4>
+		Ladle is a lightweight web server written in the Lua programming language using
+        the TCP functionality offered by LuaSocket.<br/>
+        </p>
+        <p>
+           Ladle requires the following modules in <code>package.cpath</code> to work properly:
+           <ul>
+               <li>LuaSocket</li>
+               <li>CGILua</li>
+               <li>XML4Lua</li>
+           </ul>
+        </p>
+        <p>
+        <a href="http://lua-web-server.googlecode.com" target="_blank">Ladle project page</a> |
+        <a href="http://www.lua.org" target="_blank">Official Lua website</a> |
+        <a href="http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/" target="_blank">LuaSocket website</a> |
+        <a href="http://www.keplerproject.org/cgilua/" target="_blank">CGILua website</a>
         </p>
     </body>
 </html>
-
