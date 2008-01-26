@@ -1,17 +1,16 @@
-/*
-    Stylesheet for index.html
-*/
 body {
     font-family: verdana;
     font-size: 12px;
 }
-h4 {
-    font-size: 14px;
+#links {
+    padding: 5px;
 }
 a {
     color: #000080;
+    text-decoration: none;
 }
 a:hover {
+    background-color: #E0E0FF;
     text-decoration: none;
 }
 a:visited {
