@@ -25,8 +25,8 @@ function main(arg1)
 	port = arg1 -- set first argument as port
 
 	-- display initial program information
-	print("Ladle web server v0.1.1")
-	print("Copyright (c) 2008 Samuel Saint-Pettersen")
+	print [[Ladle web server v0.1.1
+Copyright (c) 2008 Samuel Saint-Pettersen]]
 
 	-- if no port is specified, use port 80
 	if port == nil then port = 80 end
@@ -80,7 +80,7 @@ function serve(request)
 	if mime ~= nil then
             client:send("HTTP/1.1 200/OK\r\nServer: Ladle\r\n")
             client:send("Content-Type:" .. mime .. "\r\n\r\n")
-        end
+	end
 
 	-- determine if file is in binary or ascii format
 	local binary = isBinary(mime)
