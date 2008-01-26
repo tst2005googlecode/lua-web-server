@@ -31,7 +31,7 @@ function main(arg1)
 	-- if no port is specified, use port 8080
 	if port == nil then port = 8080 end
 
-	-- create tcp socket on localhost:%port%
+	-- create tcp socket on localhost:$port
 	server = assert(socket.bind("*", port))
 
 	-- display message to web server is running
