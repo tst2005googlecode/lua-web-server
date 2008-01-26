@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <mime-config>
         <file ext=".html">
+                <desc>HTML file</desc>
                 <mime>text/html</mime>
                 <bin>false</bin>
         </file>
         <file ext=".txt">
+                <desc>Text file</desc>
                 <mime>text/plain</mime>
                 <bin>false</bin>
         </file>
+        <file ext=".css">
+                <desc>Cascading Style Sheet</desc>
+                <mime>text/css</mime>
+                <bin>false</bin>
+        </file>
         <file ext=".xml">
+                <desc>XML file</desc>
                 <mime>application/xml</mime>
                 <bin>false</bin>
         </file>
         <file ext=".jpg">
+                <desc>JPEG image</desc>
                 <mime>image/jpeg</mime>
                 <bin>true</bin>
         </file>
         <file ext=".png">
+                <desc>PNG image</desc>
                 <mime>image/png</mime>
+                <bin>true</bin>
+        </file>
+        <file ext=".gif">
+                <desc>GIF image</desc>
+                <mime>image/gif</mime>
                 <bin>true</bin>
         </file>
 </mime-config>
