@@ -25,8 +25,8 @@ function main(arg1)
 	port = arg1 -- set first argument as port
 
 	-- display initial program information
-	print("Ladle web server v0.1.1.")
-	print("Copyright (c) 2008 Samuel Saint-Pettersen.")
+	print("Ladle web server v0.1.1")
+	print("Copyright (c) 2008 Samuel Saint-Pettersen")
 
 	-- if no port is specified, use port 80
 	if port == nil then port = 80 end
@@ -52,8 +52,8 @@ function waitReceive()
 		if not err then
 			-- if request is kill (via telnet), stop the server
 			if request == "kill" then
-				client:send("Ladle has stopped.\n")
-				print("Stopped.")
+				client:send("Ladle has stopped\n")
+				print("Stopped")
 				break
 			else
 				-- begin serving content
