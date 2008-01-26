@@ -28,8 +28,8 @@ function main(arg1)
 	print("Ladle web server v0.1.1.")
 	print("Copyright (c) 2008 Samuel Saint-Pettersen.")
 
-	-- if no port is specified, use port 8080
-	if port == nil then port = 8080 end
+	-- if no port is specified, use port 80
+	if port == nil then port = 80 end
 
 	-- create tcp socket on localhost:$port
 	server = assert(socket.bind("*", port))
