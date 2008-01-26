@@ -1,12 +1,12 @@
-----------------------------------------------------
--- Ladle web server.
+-----------------------------------------------------
+-- Ladle web server
 -- Version 0.1.1.
 -- Copyright (c) 2008 Samuel Saint-Pettersen.
--- Released under the GNU General Public License v3.
+-- Released under the GNU General Public License v3
 -- See the COPYING file.
-----------------------------------------------------
+-----------------------------------------------------
 
--- load module for network connections
+-- load required modules
 socket = require("socket")
 
 -- detect operating system
@@ -75,9 +75,9 @@ function serve(request)
 	local mime = getMime(ext)
 
 	-- reply with a response indicating relevant mime type
-	if(mime ~= nil) then
-	    client:send("HTTP/1.1 200/OK\r\nContent-Type:" .. mime .. "\r\n\r\n")
-	end
+	if mime ~= nil then
+            client:send("HTTP/1.1 200/OK\r\nContent-Type:" .. mime .. "\r\n\r\n")
+        end
 
 	-- determine if file is in binary or ascii format
 	local binary = isBinary(mime)
