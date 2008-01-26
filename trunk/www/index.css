@@ -1,0 +1,19 @@
+/*
+    Stylesheet for index.html
+*/
+body {
+    font-family: verdana;
+    font-size: 12px;
+}
+h4 {
+    font-size: 14px;
+}
+a {
+    color: #000080;
+}
+a:hover {
+    text-decoration: none;
+}
+a:visited {
+    color: #000080;
+}

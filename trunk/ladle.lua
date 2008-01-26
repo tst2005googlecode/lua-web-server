@@ -79,7 +79,7 @@ function serve(request)
 	if mime ~= nil then
             client:send("HTTP/1.1 200/OK\r\nServer: Ladle\r\n")
             client:send("Content-Type:" .. mime .. "\r\n\r\n")
-    end
+        end
 
 	-- determine if file is in binary or ascii format
 	local binary = isBinary(mime)
@@ -112,6 +112,7 @@ function getMime(ext)
     -- ! begin ! --
     if ext == nil then return "text/plain" end
     if ext == ".txt" then return "text/plain" end
+    if ext == ".css" then return "text/css" end
     if ext == ".html" then return "text/html" end
     if ext == ".xml" then return "application/xml" end
     if ext == ".jpg" then return "image/jpeg" end
