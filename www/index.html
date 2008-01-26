@@ -6,25 +6,27 @@
         <link rel="stylesheet" type="text/css" href="index.css"/>
     </head>
     <body>
-        <p>
-            <img alt="Powered by Lua" src="lua.gif"/>
-	    <h4>Welcome from Ladle</h4>
-            Ladle is a lightweight web server written in the Lua programming language using
-            the TCP functionality offered by LuaSocket.<br/>
-        </p>
-        <p>
-           Ladle requires the following modules in <code>package.path</code> to work properly:
-           <ul>
-               <li>LuaSocket</li>
-               <li>CGILua</li>
-               <li>XML Parser</li>
-           </ul>
-        </p>
-        <p>
-        <a href="http://lua-web-server.googlecode.com" target="_blank">Ladle project page</a> |
-        <a href="http://www.lua.org" target="_blank">Official Lua website</a> |
-        <a href="http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/" target="_blank">LuaSocket website</a> |
-        <a href="http://www.keplerproject.org/cgilua/" target="_blank">CGILua website</a>
-        </p>
+        <img alt="Powered by Lua" src="lua.gif"/><br/>
+        <div id="links">
+            <p>
+	        <a href="http://lua-web-server.googlecode.com" target="_blank">Ladle project page</a> |
+                <a href="http://www.lua.org" target="_blank">Official Lua website</a></> |
+                <a href="http://www.tecgraf.puc-rio.br/luasocket/" target="_blank">LuaSocket website</a> |
+                <a href="http://www.keplerproject.org/cgilua/" target="_blank">CGILua website</a>
+            <p>    
+        </div>
+        <div id="message">
+	    <b>Welcome from Ladle</b>
+            <p>
+                Ladle is a lightweight web server written in the Lua programming language using
+                the TCP functionality offered by LuaSocket.<br/>
+                Ladle requires the following modules in Lua's <code>package.path</code> to work properly:
+                <ul>
+                    <li>LuaSocket</li>
+                    <li>CGILua</li>
+                    <li>XML Parser</li>
+                </ul>
+            </p>
+        </div>
     </body>
 </html>
