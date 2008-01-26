@@ -8,6 +8,7 @@
 
 -- load required modules
 socket = require("socket")
+xmlp = require("xml.parser")
 
 -- detect operating system
 if os.getenv("WinDir") ~= nil then
@@ -78,7 +79,7 @@ function serve(request)
 	if mime ~= nil then
             client:send("HTTP/1.1 200/OK\r\nServer: Ladle\r\n")
             client:send("Content-Type:" .. mime .. "\r\n\r\n")
-        end
+    end
 
 	-- determine if file is in binary or ascii format
 	local binary = isBinary(mime)
@@ -89,12 +90,11 @@ function serve(request)
 		-- if file is ASCII, use just read flag
 		flags = "r"	
 	else
-		-- if file is binary, also use binary flag (b)
-		-- note: this for operating systems which read 
-		-- binary files differently such as Windows
+		-- otherwise file is binary, so also use binary flag (b)
+		-- note: this is for operating systems which read binary
+		-- files differently to plain text such as Windows
 		flags = "rb"
 	end
-	
 	served = io.open("www/" .. file, flags)
 	if served ~= nil then
 		local content = served:read("*all")
@@ -109,6 +109,7 @@ function serve(request)
 end
 -- determine mime type based on file extension
 function getMime(ext)
+    -- ! begin ! --
     if ext == nil then return "text/plain" end
     if ext == ".txt" then return "text/plain" end
     if ext == ".html" then return "text/html" end
@@ -116,6 +117,7 @@ function getMime(ext)
     if ext == ".jpg" then return "image/jpeg" end
     if ext == ".png" then return "image/png" end
     if ext == ".gif" then return "image/gif" end	
+    -- ! end ! --
 end
 -- determine if file is binary - true or false
 function isBinary(mime)
