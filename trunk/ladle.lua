@@ -3,7 +3,7 @@
 -- Version 0.1.1.
 -- Copyright (c) 2008 Samuel Saint-Pettersen.
 -- Released under the GNU General Public License v3
--- See the COPYING file.
+-- See the COPYING file
 -----------------------------------------------------
 
 -- load required modules
