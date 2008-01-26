@@ -1,3 +1,3 @@
 @rem telnet into server
 @rem usage: telin %port
-telnet localhost %1
+@telnet localhost %1
