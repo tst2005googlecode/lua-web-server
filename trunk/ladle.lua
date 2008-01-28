@@ -78,8 +78,8 @@ function serve(request)
 
 	-- reply with a response, which includes relevant mime type
 	if mime ~= nil then
-            client:send("HTTP/1.1 200/OK\r\nServer: Ladle\r\n")
-            client:send("Content-Type:" .. mime .. "\r\n\r\n")
+       client:send("HTTP/1.1 200/OK\r\nServer: Ladle\r\n")
+       client:send("Content-Type:" .. mime .. "\r\n\r\n")
 	end
 
 	-- determine if file is in binary or ascii format
