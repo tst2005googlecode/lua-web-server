@@ -18,7 +18,7 @@ else
 end
 
 -- load mime configuration file
--- !
+mimeconf = xmlp.load("mime.xml")
 
 -- start web server
 function main(arg1) 
@@ -82,7 +82,7 @@ function serve(request)
         client:send("Content-Type:" .. mime .. "\r\n\r\n")
     end
 
-    -- determine if file is in binary or ascii format
+    -- determine if file is in binary or ASCII format
     local binary = isBinary(mime)
 
     -- load requested file in browser
@@ -110,16 +110,6 @@ function serve(request)
 end
 -- determine mime type based on file extension
 function getMime(ext)
-    -- ! begin ! --
-    if ext == nil then return "text/plain" end
-    if ext == ".txt" then return "text/plain" end
-    if ext == ".css" then return "text/css" end
-    if ext == ".html" then return "text/html" end
-    if ext == ".xml" then return "application/xml" end
-    if ext == ".jpg" then return "image/jpeg" end
-    if ext == ".png" then return "image/png" end
-    if ext == ".gif" then return "image/gif" end        
-    -- ! end ! --
 end
 -- determine if file is binary - true or false
 function isBinary(mime)
@@ -127,7 +117,7 @@ function isBinary(mime)
 end
 -- display error message and server information
 function error(message)
-        client:send(message)
+    client:send(message)
 end
 -- invoke program starting point:
 -- parameter is command-line argument for port number
