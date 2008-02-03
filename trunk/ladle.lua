@@ -18,7 +18,7 @@ else
 end
 
 -- load mime configuration file
-mimeconf = xmlp.load("mime.xml")
+mimeconf = xmlp.load("config/mime.xml")
 
 -- start web server
 function main(arg1) 
@@ -74,7 +74,6 @@ function serve(request)
     -- retrieve mime type for file based on extension
     local ext = string.match(file, "%\.%l%l%l%l?")
     local mime = getMime(ext)
-    print(mime) -- !
 
     -- reply with a response, which includes relevant mime type
     if mime ~= nil then
