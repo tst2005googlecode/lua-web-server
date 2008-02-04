@@ -116,8 +116,8 @@ end
 -- determine mime type based on file extension
 function getMime(ext)
     local i = 1
-    local tags = xmlp.ctag(mconf, "file")
-    while i < tags do
+    local exts = xmlp.ctag(mconf, "file")
+    while i < exts do
         local v = xmlp.vatt(mconf, "file", "ext", i)
         if v == ext then
             return xmlp.vtag(mconf, "mime", i)
@@ -127,8 +127,16 @@ function getMime(ext)
 end
 -- determine if file is binary - true or false
 function isBinary(mime)
-    --! TODO
-end
+    local i = 1
+    local types = xmlp.ctag(mconf, "mime")
+    while i < types do
+        local v = xmlp.vtag(mconf, "mime", i)
+        if v == mime then
+            return xmlp.vtag(mconf, "bin", i)
+        end
+        i = i + 1
+    end
+end     
 -- display error message and server information
 function err(message)
     client:send(message)
