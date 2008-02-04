@@ -18,7 +18,7 @@ else
 end
 
 -- load mime configuration file
-mimeconf = xmlp.load("config/mime.xml")
+mconf = xmlp.load("config/mime.xml")
 
 -- start web server
 function main(arg1) 
@@ -30,6 +30,11 @@ Copyright (c) 2008 Samuel Saint-Pettersen]]
 
     -- if no port is specified, use port 80
     if port == nil then port = 80 end
+
+    -- display warning message if configuration missing
+    if mconf == nil then
+        print("\nWarning: MIME config file missing")
+    end 
 
     -- create tcp socket on localhost:$port
     server = assert(socket.bind("*", port))
@@ -101,7 +106,7 @@ function serve(request)
         client:send(content)
     else
         -- display not found error
-        error("Not found!")
+        err("Not found!")
     end
 
     -- done with client, close request
@@ -109,13 +114,15 @@ function serve(request)
 end
 -- determine mime type based on file extension
 function getMime(ext)
+    local tags = xmlp.ctag(mconf)
+    print(tags) -- !
 end
 -- determine if file is binary - true or false
 function isBinary(mime)
     --! TODO
 end
 -- display error message and server information
-function error(message)
+function err(message)
     client:send(message)
 end
 -- invoke program starting point:
