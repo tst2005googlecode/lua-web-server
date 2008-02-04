@@ -79,6 +79,7 @@ function serve(request)
     -- retrieve mime type for file based on extension
     local ext = string.match(file, "%\.%l%l%l%l?")
     local mime = getMime(ext)
+    print(mime) -- !
 
     -- reply with a response, which includes relevant mime type
     if mime ~= nil then
@@ -114,8 +115,15 @@ function serve(request)
 end
 -- determine mime type based on file extension
 function getMime(ext)
-    local tags = xmlp.ctag(mconf)
-    print(tags) -- !
+    local i = 1
+    local tags = xmlp.ctag(mconf, "file")
+    while i < tags do
+        local v = xmlp.vatt(mconf, "file", "ext", i)
+        if v == ext then
+            return xmlp.vtag(mconf, "mime", i)
+        end
+        i = i + 1
+    end
 end
 -- determine if file is binary - true or false
 function isBinary(mime)
