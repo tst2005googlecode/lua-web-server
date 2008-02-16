@@ -18,7 +18,7 @@ else
 end
 
 -- load mime configuration file
-mconf = xmlp.load("config/mime.xml")
+mconf = io.open("config/mime.xml", "r")
 
 -- start web server
 function main(arg1) 
@@ -119,7 +119,9 @@ function getMime(ext)
     local exts = xmlp.ctag(mconf, "file")
     while i < exts do
         local v = xmlp.vatt(mconf, "file", "ext", i)
+        print("getMime v -> " .. v) -- !
         if v == ext then
+            print("getMime vtag -> " .. xmlp.vtag(mconf, "mime", i)) -- !
             return xmlp.vtag(mconf, "mime", i)
         end
         i = i + 1
@@ -131,7 +133,9 @@ function isBinary(mime)
     local types = xmlp.ctag(mconf, "mime")
     while i < types do
         local v = xmlp.vtag(mconf, "mime", i)
+        print("isBinary v -> " .. v) -- !
         if v == mime then
+            print("isBinary vtag -> " .. xmlp.vtag(mconf, "bin", i)) -- !
             return xmlp.vtag(mconf, "bin", i)
         end
         i = i + 1
