@@ -1,4 +1,0 @@
-#!/bin/sh
-# run the web server
-# usage: webs $port
-sudo lua ladle.lua $1
