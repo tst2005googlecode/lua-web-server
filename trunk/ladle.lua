@@ -19,6 +19,7 @@ end
 
 -- load mime configuration file
 mconf = io.open("config/mime.xml", "r")
+if mconf ~= nil then mconf = mconf:read("*all") end
 
 -- start web server
 function main(arg1) 
@@ -79,7 +80,7 @@ function serve(request)
     -- retrieve mime type for file based on extension
     local ext = string.match(file, "%\.%l%l%l%l?")
     local mime = getMime(ext)
-    print(mime) -- !
+    --print(mime) -- !
 
     -- reply with a response, which includes relevant mime type
     if mime ~= nil then
@@ -89,6 +90,7 @@ function serve(request)
 
     -- determine if file is in binary or ASCII format
     local binary = isBinary(mime)
+    --print(binary) -- !
 
     -- load requested file in browser
     local served, flags
@@ -119,9 +121,7 @@ function getMime(ext)
     local exts = xmlp.ctag(mconf, "file")
     while i < exts do
         local v = xmlp.vatt(mconf, "file", "ext", i)
-        print("getMime v -> " .. v) -- !
         if v == ext then
-            print("getMime vtag -> " .. xmlp.vtag(mconf, "mime", i)) -- !
             return xmlp.vtag(mconf, "mime", i)
         end
         i = i + 1
@@ -133,9 +133,7 @@ function isBinary(mime)
     local types = xmlp.ctag(mconf, "mime")
     while i < types do
         local v = xmlp.vtag(mconf, "mime", i)
-        print("isBinary v -> " .. v) -- !
         if v == mime then
-            print("isBinary vtag -> " .. xmlp.vtag(mconf, "bin", i)) -- !
             return xmlp.vtag(mconf, "bin", i)
         end
         i = i + 1

@@ -25,6 +25,11 @@
                 <mime>application/zip</mime>
                 <bin>true</bin>
         </file>
+        <file ext=".gif">
+                <desc>GIF Image</desc>
+                <mime>image/gif</mime>
+                <bin>true</bin>
+        </file>
         <file ext=".jpg">
                 <desc>JPEG Image</desc>
                 <mime>image/jpeg</mime>
@@ -33,11 +38,6 @@
         <file ext=".png">
                 <desc>PNG Image</desc>
                 <mime>image/png</mime>
-                <bin>true</bin>
-        </file>
-        <file ext=".gif">
-                <desc>GIF Image</desc>
-                <mime>image/gif</mime>
                 <bin>true</bin>
         </file>
 </mime-config>
