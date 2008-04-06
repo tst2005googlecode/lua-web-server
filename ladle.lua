@@ -71,7 +71,7 @@ end
 -- serve requested content
 function serve(request)
     -- resolve requested file from client request
-    local file = string.match(request, "%l+%\/?.?%l+")
+    local file = string.match(request, "%w+%\/?.?%l+")
     -- if no file mentioned in request, assume root file is index.html.
     if file == nil then
         file = "index.html"
@@ -80,7 +80,6 @@ function serve(request)
     -- retrieve mime type for file based on extension
     local ext = string.match(file, "%\.%l%l%l%l?")
     local mime = getMime(ext)
-    print(mime) -- !
 
     -- reply with a response, which includes relevant mime type
     if mime ~= nil then
@@ -90,7 +89,6 @@ function serve(request)
 
     -- determine if file is in binary or ASCII format
     local binary = isBinary(mime)
-    print(binary) -- !
 
     -- load requested file in browser
     local served, flags
@@ -118,7 +116,7 @@ end
 -- determine mime type based on file extension
 function getMime(ext)
     local i = 1
-    local exts = xmlp.ctag(mconf, "file")
+    local exts = xmlp.ctag(mconf, "file") + 1
     while i < exts do
         local v = xmlp.vatt(mconf, "file", "ext", i)
         if v == ext then
@@ -130,7 +128,7 @@ end
 -- determine if file is binary - true or false
 function isBinary(mime)
     local i = 1
-    local types = xmlp.ctag(mconf, "mime")
+    local types = xmlp.ctag(mconf, "mime") + 1
     while i < types do
         local v = xmlp.vtag(mconf, "mime", i)
         if v == mime then
