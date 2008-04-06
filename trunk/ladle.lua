@@ -116,7 +116,7 @@ end
 -- determine mime type based on file extension
 function getMime(ext)
     local i = 1
-    local exts = xmlp.ctag(mconf, "file") + 1
+    local exts = xmlp.ctag(mconf, "file")
     while i < exts do
         local v = xmlp.vatt(mconf, "file", "ext", i)
         if v == ext then
@@ -128,7 +128,7 @@ end
 -- determine if file is binary - true or false
 function isBinary(mime)
     local i = 1
-    local types = xmlp.ctag(mconf, "mime") + 1
+    local types = xmlp.ctag(mconf, "mime")
     while i < types do
         local v = xmlp.vtag(mconf, "mime", i)
         if v == mime then
