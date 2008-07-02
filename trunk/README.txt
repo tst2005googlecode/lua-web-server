@@ -34,7 +34,7 @@ To stop the Ladle web server:
 2) Navigate to directory containing laldle.lua
 3) Run "telin" script followed by port number
 
-   -> E.g. "telin 80" or "./telin 80"
+   -> E.g. "telin 80" or "./telin.sh 80"
       if you ran the server on port 80
 
 4) Type "kill" and hit return
