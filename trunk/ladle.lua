@@ -3,7 +3,6 @@
 -- Version 0.1.1
 -- Copyright (c) 2008 Samuel Saint-Pettersen
 -- Released under the MIT License
--- See the COPYING file
 -----------------------------------------------------
 
 -- load required modules
