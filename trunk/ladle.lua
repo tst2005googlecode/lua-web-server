@@ -139,6 +139,7 @@ end
 -- display error message and server information
 function err(message)
     client:send(message)
+	-- ...
 end
 -- invoke program starting point:
 -- parameter is command-line argument for port number
