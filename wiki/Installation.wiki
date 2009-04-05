@@ -6,6 +6,7 @@ This is a experimental project made to see if I could convert a web server imple
 ==Prerequisties==
 
 This web server requires the Lua interpreter and LuaSocket.
+It also needs the [http://code.google.com/p/lua-modules xml parser module].
 
 ==Installing web server== 
 
